@@ -95,9 +95,9 @@ export default function VideoPlayerComponent({stringTranslated, comStatus, isDar
     }
 
     return(
-        <View style={[styles.container, isDarkThemeEnabled? {backgroundColor: '#181818'} : {backgroundColor: '#FEFEFE'}]}>
+        <View testID='videoPlayerComponent' style={[styles.container, isDarkThemeEnabled? {backgroundColor: '#181818'} : {backgroundColor: '#FEFEFE'}]}>
             <View style={styles.stringContainer}>
-                <Text style={styles.titleStyle}>Traducción</Text>
+                <Text style={styles.titleStyle}>Texto traducido</Text>
                 <Text style={[styles.stringStyle, isDarkThemeEnabled? {color: 'white'} : {color: 'black'}]}>{stringTranslated}</Text>
             </View>
       
@@ -124,21 +124,20 @@ export default function VideoPlayerComponent({stringTranslated, comStatus, isDar
                         <NotFoundIcon width={responsiveScreenWidth(30)} height={responsiveScreenHeight(15)}/>
                         <Text style={styles.videoNotFoundText}>Video no encontrado, prueba buscando otra oración o palabra</Text>
                     </View>
-                } 
-                     
+                }      
             </View>  
              
             <View style={styles.bottomContainer}>      
                 <View>
                     {apiRequestData || !comStatus? 
-                        <TouchableOpacity onPress={favoriteHandler}>
+                        <TouchableOpacity testID='favoriteButton' onPress={favoriteHandler}>
                             <Ionicons name="star-outline" size={responsiveFontSize(3.5)} style={styles.icon} color={favorite? '#FF6666' : '#39B4C8'}/>
                         </TouchableOpacity> 
                     : null}
                 </View>        
 
                 {mainComponent? null:
-                <TouchableOpacity onPress={() => {setComponentStatus(!componentStatus)}}>
+                <TouchableOpacity testID='expandButton' onPress={() => {setComponentStatus(!componentStatus)}}>
                     <Ionicons name="expand" size={responsiveFontSize(3.5)} style={styles.icon} color={'#39B4C8'}/>
                 </TouchableOpacity>}
             </View>

@@ -5,10 +5,9 @@ import { Styles } from './UserProfileScreenComponentStyles';
 import { responsiveScreenHeight, responsiveScreenWidth } from 'react-native-responsive-dimensions';
 import { ThemeContext } from '../../../../../context/ThemeContext';
 import { AccountContext } from '../../../../../context/AccountContext';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import AntDesing from '@expo/vector-icons/AntDesign';
 import ProfileIcon from '../../../../../assets/icons/ProfileIcon';
-import Logout from '../../../../../assets/icons/Logout';
-import EditProfile from '../../../../../assets/icons/EditProfile';
-import NextIcon from '../../../../../assets/icons/Next';
 
 
 export default function UserProfileScreenComponent({ navigation, route }) {
@@ -37,13 +36,13 @@ export default function UserProfileScreenComponent({ navigation, route }) {
     }
 
     return (
-        <View style={[isDarkThemeEnabled ? { backgroundColor: 'black' } : { backgroundColor: '#F5F4FA' }, { paddingTop: insets.top, flex: 1 }]} >
+        <View testID='settingsScreen' style={[isDarkThemeEnabled ? { backgroundColor: 'black' } : { backgroundColor: '#F5F4FA' }, { paddingTop: insets.top, flex: 1 }]} >
             <ScrollView style={{ paddingHorizontal: responsiveScreenWidth(4), paddingTop: responsiveScreenHeight(2) }}>
 
-                <Text style={[Styles.title, isDarkThemeEnabled ? { color: 'white' } : { color: 'black' }]}>Settings</Text>
+                <Text style={[Styles.title, isDarkThemeEnabled ? { color: 'white' } : { color: 'black' }]}>Ajustes</Text>
 
                 <View style={[Styles.categoryLayout, isDarkThemeEnabled ? { backgroundColor: '#181818' } : { backgroundColor: 'white' }]}>
-                    <Text style={[Styles.categoryLabel, isDarkThemeEnabled ? { color: '#3E3E3E' } : { color: '#898989' }]}>Profile</Text>
+                    <Text style={[Styles.categoryLabel, isDarkThemeEnabled ? { color: '#3E3E3E' } : { color: '#898989' }]}>Perfil</Text>
                 </View>
 
                 <View style={Styles.profileContainer}>
@@ -57,26 +56,26 @@ export default function UserProfileScreenComponent({ navigation, route }) {
                 </View>
 
                 <View style={[Styles.categoryLayout, isDarkThemeEnabled ? { backgroundColor: '#181818' } : { backgroundColor: 'white' }]}>
-                    <Text style={[Styles.categoryLabel, isDarkThemeEnabled ? { color: '#3E3E3E' } : { color: '#898989' }]}>Preferences</Text>
+                    <Text style={[Styles.categoryLabel, isDarkThemeEnabled ? { color: '#3E3E3E' } : { color: '#898989' }]}>Opciones de usuario</Text>
                 </View>
 
                 <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
                     <View style={[Styles.buttonContainer, { marginBottom: 20, paddingRight: 10 }]}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <EditProfile width={25} height={30}/>   
-                            <Text style={[Styles.buttonText, isDarkThemeEnabled ? { color: '#DBDBDB' } : { color: '#505050' }]}>Edit profile</Text>
+                            <Ionicons name="create-outline" size={responsiveScreenWidth(8)} color="#686868" />
+                            <Text style={[Styles.buttonText, isDarkThemeEnabled ? { color: '#DBDBDB' } : { color: '#505050' }]}>Modificar perfil</Text>
                         </View>
-                        <NextIcon width={20} height={20}/>
+                        <Ionicons name="chevron-forward" size={responsiveScreenWidth(8)} color="#686868" />
                     </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={logoutHandler}>
                     <View style={[Styles.buttonContainer, { marginBottom: 20, paddingRight: 10 }]}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>            
-                            <Logout width={25} height={30} />              
-                            <Text style={[Styles.buttonText, isDarkThemeEnabled ? { color: '#DBDBDB' } : { color: '#505050' }]}>Log out</Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Ionicons name="log-out-outline" size={responsiveScreenWidth(8)} color="#686868" />
+                            <Text testID='logoutButton' style={[Styles.buttonText, isDarkThemeEnabled ? { color: '#DBDBDB' } : { color: '#505050' }]}>Cerrar sesión</Text>
                         </View>
-                        <NextIcon width={20} height={20}/>
+                        <Ionicons name="chevron-forward" size={responsiveScreenWidth(8)} color="#686868" />
                     </View>
                 </TouchableOpacity>
             </ScrollView>
