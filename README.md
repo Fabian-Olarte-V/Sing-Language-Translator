@@ -123,7 +123,3 @@ To make the full experience functional again, the main work would be:
 - Replace the retired speech-to-text endpoint with a supported speech API.
 - Move runtime secrets and environment-specific configuration out of source files.
 - Upgrade dependencies from the current Expo and React Native versions.
-
-## License
-
-No license has been added yet. If you plan to publish this repository publicly, add the license that matches your intended usage.
